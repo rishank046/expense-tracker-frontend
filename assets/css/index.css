@@ -1,21 +1,23 @@
 :root {
-    --bg-dark : hsl(0 , 0% , 0%);
-    --bg : hsl(0 , 0% , 5%);
-    --bg-light : hsl(0 , 0% , 10%);
+    --bg-dark : hsl(0 , 0% , 5%);
+    --bg : hsl(0 , 0% , 10%);
+    --bg-light : hsl(0 , 0% , 20%);
     --text : hsl(0 , 0% , 95%);
     --text-muted : hsl(0 , 0% , 70%);
     --accent : hsl(261, 51%, 51%);
-    --border : hsl(0 , 0% , 20%)
+    --border-top : hsl(0 , 0% , 30%);
+    --border-bottom : hsl(0 , 0% , 10%);
 }
 
 [data-theme='light'] {
-    --bg-dark : hsl(0 , 0% , 90%);
-    --bg : hsl(0 , 0% , 95%);
-    --bg-light : hsl(0 , 0% , 100%);
+    --bg-dark : hsl(0 , 0% , 85%);
+    --bg : hsl(0 , 0% , 90%);
+    --bg-light : hsl(0 , 0% , 95%);
     --text : hsl(0 , 0% , 5%);
     --text-muted : hsl(0 , 0% , 30%);
     --accent : hsl(261, 51%, 51%);
-    --border : hsl(0 , 0% , 80%)
+    --border-top : hsl(0 , 0% , 100%);
+    --border-bottom : hsl(0 , 0% , 85%);
 }
 
 html{
@@ -38,7 +40,6 @@ header{
     width: 100vw;
     max-width: 1600px;
     background-color: var(--bg);
-    border: 1px solid var(--border);
     box-sizing: border-box;
     display: flex;
     justify-content:space-between;
@@ -76,7 +77,8 @@ header > nav > ul > li >a{
     background-color: var(--bg-light);
     padding: 0.5rem;
     border-radius: 5px;
-    border: 1px solid var(--border);
+    border-top: 1px solid var(--border-top);
+    border-bottom: 1px solid var(--border-bottom);
 }
 
 .auth-actions{
@@ -96,7 +98,8 @@ header > nav > ul > li >a{
     background-color: var(--bg-light);
     color: var(--text-muted);
     box-sizing: border-box;
-    border: 1px solid var(--border);
+    border-top: 1px solid var(--border-top);
+    border-bottom: 1px solid var(--border-bottom);
 }
 
 main{
@@ -123,7 +126,6 @@ main{
     min-height: 49%;
     width: 100%;
     border-radius: 5px;
-    border: 1px solid var(--border);
     background-color: var(--bg);
 }
 
@@ -131,7 +133,6 @@ main{
     min-height: 49%;
     width: 100%;
     border-radius: 5px;
-    border: 1px solid var(--border);
     background-color: var(--bg);
 }
 
@@ -139,6 +140,5 @@ main{
     min-height: 70%;
     width: 69%;
     border-radius: 5px;
-    border: 1px solid var(--border);
     background-color: var(--bg);
 }
