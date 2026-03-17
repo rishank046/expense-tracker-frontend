@@ -41,11 +41,10 @@ header{
     border: 1px solid var(--border);
     box-sizing: border-box;
     display: flex;
-    justify-content:space-around;
-    gap: 40rem;
+    justify-content:space-between;
 }
 
-header > h1{
+header > img{
     display: inline-block;
     width: 20%;
     max-width: 50%;
@@ -55,7 +54,7 @@ header > nav{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 30%;
+    width: 40vw;
 }
 
 header > nav > ul{
@@ -70,6 +69,14 @@ header > nav > ul{
 header > nav > ul > li >a{
     text-decoration: none;
     color: var(--text);
+}
+
+#theme-toggle{
+    all: unset;
+    background-color: var(--bg-light);
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid var(--border);
 }
 
 .auth-actions{
