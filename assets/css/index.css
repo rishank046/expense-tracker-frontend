@@ -142,3 +142,183 @@ main{
     border-radius: 5px;
     background-color: var(--bg);
 }
+
+/* Sidebar base state */
+/* Sidebar Setup */
+aside {
+    width: 280px;
+    height: 100vh;
+    background-color: var(--bg-dark);
+    border-right: 1px solid var(--border-top);
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    z-index: 100;
+}
+
+/* Collapsed State: Thoda wide rakha hai icons ke liye */
+aside.collapsed {
+    width: 85px !important;
+}
+
+/* Navigation List */
+aside ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+aside ul li a {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Text aur Icon ke beech gap */
+    padding: 15px;
+    text-decoration: none;
+    color: var(--text-muted);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    white-space: nowrap; /* Text line change na kare */
+}
+
+/* Icons styling */
+.icon {
+    font-size: 20px;
+    min-width: 25px;
+    text-align: center;
+}
+
+/* Hover Effect */
+aside ul li a:hover {
+    background: var(--bg-light);
+    color: var(--text);
+}
+
+/* Text hide logic */
+aside.collapsed .nav-text {
+    display: none;
+}
+
+/* Center icons when collapsed */
+aside.collapsed ul li a {
+    justify-content: center;
+    padding: 15px 0;
+}
+
+/* Auth Section Buttons */
+.aside-auth {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-top);
+}
+
+.aside-auth button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    height: 50px;
+    padding: 0 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border-top);
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Collapsed Auth Buttons: Square icons ban jayenge */
+aside.collapsed .aside-auth button {
+    padding: 0;
+    justify-content: center;
+    width: 50px;
+    margin: 0 auto;
+}
+
+.aside-auth button:last-child {
+    background: var(--accent);
+    color: white;
+    border: none;
+}
+
+/* Toggle Button */
+#toggle-btn {
+    background: var(--bg-light);
+    border: none;
+    color: var(--text);
+    font-size: 20px;
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+}
+
+aside.collapsed #toggle-btn {
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Container for top buttons */
+.sidebar-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+/* Hide theme toggle text/alignment when collapsed */
+aside.collapsed .sidebar-controls {
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Sidebar Theme Button Styling */
+.sidebar-theme-btn {
+    all: unset;
+    background-color: var(--bg-light);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+    border-top: 1px solid var(--border-top);
+    border-bottom: 1px solid var(--border-bottom);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar-theme-btn:hover {
+    background-color: var(--accent);
+    transform: rotate(15deg); /* Subtle smooth rotation */
+}
+
+/* Ensure the toggle button itself stays clean */
+#toggle-btn {
+    all: unset;
+    background: var(--bg-light);
+    color: var(--text);
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+#toggle-btn:hover {
+    background-color: var(--bg-light);
+    filter: brightness(1.2);
+}

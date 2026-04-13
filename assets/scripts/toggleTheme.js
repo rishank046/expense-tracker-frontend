@@ -45,3 +45,5 @@ document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
 
 // Run on load
 initTheme();
+
+

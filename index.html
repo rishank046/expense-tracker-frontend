@@ -10,32 +10,35 @@
 <body>
     <header>
         <img src="./assets/images/logo-full.png" alt="">
-        <nav>
-            <ul>
-                <li><a href="">Dashboard</a></li>
-                <li><a href="">Transactions</a></li>
-                <li><a href="">Analysis</a></li>
-                <li><button id="theme-toggle">
-                        <span id="light-mode">☀️</span>
-                        <span id="dark-mode">🌙</span>
-                    </button>
-                </li>
-            </ul>
-            <div class="auth-actions">
-                <button>Login</button>
-                <button>Sign Up</button>
-            </div>
-        </nav>
     </header>
 
     <main>
         <div class="graphicalViewLeft">
-            <div class="totalExpense"></div>
-            <div class="expenseChart"></div>
+ <aside id="sidebar">
+    <nav class="sidebar-nav">
+        <div class="top-nav">
+            <div class="sidebar-controls">
+                <button id="toggle-btn" title="Collapse Menu">☰</button>
+                <button id="theme-toggle" class="sidebar-theme-btn">
+                    <span id="light-mode">☀️</span>
+                    <span id="dark-mode">🌙</span>
+                </button>
+            </div>
+            
+            <ul>
+                <li><a href="#"><span class="icon">🏠</span> <span class="nav-text">Home</span></a></li>
+                <li><a href="#"><span class="icon">📊</span> <span class="nav-text">Dashboard</span></a></li>
+                <li><a href="#"><span class="icon">💸</span> <span class="nav-text">Transactions</span></a></li>
+                <li><a href="#"><span class="icon">📈</span> <span class="nav-text">Analysis</span></a></li>
+            </ul>
         </div>
-        <div class="expenseTableRight">
-            <table>
-            </table>
+
+        <div class="aside-auth">
+            <button title="Log In"><span class="icon">🔑</span> <span class="nav-text">Log In</span></button>
+            <button title="Sign Up"><span class="icon">📝</span> <span class="nav-text">Sign Up</span></button>
+        </div>
+    </nav>
+</aside>
         </div>
     </main>
 
@@ -44,5 +47,13 @@
         <span>contact me : rishank046@gmail.com</span>
     </footer>
     <script src="./assets/scripts/toggleTheme.js" defer></script>
+    <script>
+        const sidebar = document.getElementById('sidebar');
+const toggleBtn = document.getElementById('toggle-btn');
+
+toggleBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('collapsed');
+});
+    </script>
 </body>
 </html>
