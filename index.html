@@ -3,57 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expense Tracker | make budget better</title>
+    <title>Expense Tracker | Dashboard</title>
     <link rel="stylesheet" href="./assets/css/index.css">
-    <link rel="icon" href="./assets/images/">
 </head>
 <body>
-    <header>
-        <img src="./assets/images/logo-full.png" alt="">
-    </header>
-
-    <main>
-        <div class="graphicalViewLeft">
- <aside id="sidebar">
-    <nav class="sidebar-nav">
-        <div class="top-nav">
-            <div class="sidebar-controls">
-                <button id="toggle-btn" title="Collapse Menu">☰</button>
-                <button id="theme-toggle" class="sidebar-theme-btn">
-                    <span id="light-mode">☀️</span>
-                    <span id="dark-mode">🌙</span>
-                </button>
+    <div class="app-container">
+        <aside id="sidebar">
+            <div class="sidebar-header">
+                <img src="./assets/images/logo-full.png" alt="Logo" class="logo">
+                <button id="toggle-btn">☰</button>
             </div>
             
-            <ul>
-                <li><a href="#"><span class="icon">🏠</span> <span class="nav-text">Home</span></a></li>
-                <li><a href="#"><span class="icon">📊</span> <span class="nav-text">Dashboard</span></a></li>
-                <li><a href="#"><span class="icon">💸</span> <span class="nav-text">Transactions</span></a></li>
-                <li><a href="#"><span class="icon">📈</span> <span class="nav-text">Analysis</span></a></li>
-            </ul>
-        </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#" class="active"><span class="icon">🏠</span> <span class="nav-text">Home</span></a></li>
+                    <li><a href="#"><span class="icon">📊</span> <span class="nav-text">Dashboard</span></a></li>
+                    <li><a href="#"><span class="icon">💸</span> <span class="nav-text">Transactions</span></a></li>
+                    <li><a href="#"><span class="icon">📈</span> <span class="nav-text">Analysis</span></a></li>
+                </ul>
 
-        <div class="aside-auth">
-            <button title="Log In"><span class="icon">🔑</span> <span class="nav-text">Log In</span></button>
-            <button title="Sign Up"><span class="icon">📝</span> <span class="nav-text">Sign Up</span></button>
-        </div>
-    </nav>
-</aside>
-        </div>
-    </main>
+                <div class="sidebar-footer">
+                    <button id="theme-toggle" class="sidebar-theme-btn" title="Switch Theme">
+                        <span id="light-mode" style="display: none;">☀️</span>
+                        <span id="dark-mode">🌙</span>
+                    </button>
+                    <div class="aside-auth">
+                        <button class="btn-login"><span class="icon">🔑</span> <span class="nav-text">Log In</span></button>
+                    </div>
+                </div>
+            </nav>
+        </aside>
 
-    <footer>
-        <span>@made by Rishank Kumar</span>
-        <span>contact me : rishank046@gmail.com</span>
-    </footer>
-    <script src="./assets/scripts/toggleTheme.js" defer></script>
+        <main class="content-area">
+            <header class="top-bar">
+                <div class="welcome-text">
+                    <h1>Dashboard</h1>
+                    <p>Welcome back, Rishank</p>
+                </div>
+            </header>
+
+            <section class="dashboard-grid">
+                <div class="grid-left">
+                    <div class="glass-card totalExpense"></div>
+                    <div class="glass-card expenseChart"></div>
+                </div>
+                <div class="grid-right">
+                    <div class="glass-card expenseTableRight"></div>
+                </div>
+            </section>
+
+            <footer>
+                <span>@made by Rishank Kumar</span>
+                <span>rishank046@gmail.com</span>
+            </footer>
+        </main>
+    </div>
+
     <script>
         const sidebar = document.getElementById('sidebar');
-const toggleBtn = document.getElementById('toggle-btn');
-
-toggleBtn.addEventListener('click', () => {
-    sidebar.classList.toggle('collapsed');
-});
+        const toggleBtn = document.getElementById('toggle-btn');
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+        });
     </script>
+    <script src="./assets/scripts/toggleTheme.js"></script>
 </body>
 </html>

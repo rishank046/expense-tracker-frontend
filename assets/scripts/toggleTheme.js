@@ -1,37 +1,14 @@
-const toggleTheme = () => {
-    const html = document.documentElement;
-    const darkIcon = document.getElementById('dark-mode');
-    const lightIcon = document.getElementById('light-mode');
-    
-    // Determine the new theme
-    const currentTheme = html.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    
-    // Apply theme to the root element
-    html.setAttribute('data-theme', newTheme);
-    
-    // Toggle icon visibility
-    if (newTheme === 'light') {
-        darkIcon.style.display = 'none';
-        lightIcon.style.display = 'block';
-    } else {
-        darkIcon.style.display = 'block';
-        lightIcon.style.display = 'none';
-    }
-    
-    // Optional: Save preference to localStorage
-    localStorage.setItem('theme', newTheme);
-};
+const themeToggle = document.getElementById('theme-toggle');
+const html = document.documentElement;
 
-// Initialize theme on page load
-const initTheme = () => {
-    const savedTheme = localStorage.getItem('theme') || 'dark'; // Default to dark
-    document.documentElement.setAttribute('data-theme', savedTheme);
+const applyTheme = (theme) => {
+    html.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
     
     const darkIcon = document.getElementById('dark-mode');
     const lightIcon = document.getElementById('light-mode');
     
-    if (savedTheme === 'light') {
+    if (theme === 'light') {
         darkIcon.style.display = 'none';
         lightIcon.style.display = 'block';
     } else {
@@ -40,10 +17,10 @@ const initTheme = () => {
     }
 };
 
-// Assuming you have a button or container with id="theme-toggle"
-document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+themeToggle.addEventListener('click', () => {
+    const currentTheme = html.getAttribute('data-theme') || 'dark';
+    applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+});
 
-// Run on load
-initTheme();
-
-
+// Load Preference
+applyTheme(localStorage.getItem('theme') || 'dark');

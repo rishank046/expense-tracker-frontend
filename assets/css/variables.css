@@ -1,0 +1,26 @@
+:root {
+    /* Default Dark Mode */
+    --bg-dark: hsl(0, 0%, 5%);
+    --bg: hsl(0, 0%, 10%);
+    --bg-light: hsl(0, 0%, 15%);
+    --text: hsl(0, 0%, 95%);
+    --text-dim: hsla(0, 0%, 95%, 0.5);
+    --text-muted: hsl(0, 0%, 70%);
+    --accent: hsl(261, 51%, 51%);
+    --glass: rgba(255, 255, 255, 0.03);
+    --glass-heavy: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='light'] {
+    --bg-dark: hsl(0, 0%, 90%);
+    --bg: hsl(0, 0%, 95%);
+    --bg-light: hsl(0, 0%, 100%);
+    --text: hsl(0, 0%, 10%);
+    --text-dim: hsla(0, 0%, 10%, 0.5);
+    --text-muted: hsl(0, 0%, 30%);
+    --accent: hsl(261, 51%, 51%);
+    --glass: rgba(0, 0, 0, 0.03);
+    --glass-heavy: rgba(0, 0, 0, 0.08);
+    --glass-border: rgba(0, 0, 0, 0.1);
+}

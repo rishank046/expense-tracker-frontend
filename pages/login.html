@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker | Login</title>
+    <style>
+        @import url('../assets/css/variables.css');
+
+        :root {
+            --accent: #007aff;
+            --glass-bg: rgba(20, 20, 20, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --input-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #050505;
+            overflow: hidden;
+        }
+
+        .bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(0.6);
+        }
+
+        main {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 400px;
+            padding: 40px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .header h1 {
+            color: #fff;
+            font-size: 28px;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            margin-left: 4px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--input-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 15px;
+            transition: all 0.2s ease;
+            outline: none;
+        }
+
+        input:focus {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.15);
+        }
+
+        #submit-button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 10px;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.1s active, background 0.2s ease;
+        }
+
+        #submit-button:hover {
+            background: #0084ff;
+            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+        }
+
+        #submit-button:active {
+            transform: scale(0.98);
+        }
+
+        .footer-links {
+            margin-top: 24px;
+            text-align: center;
+        }
+
+        .footer-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 13px;
+            transition: opacity 0.2s;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <img src="../assets/images/login-poster.jpg" alt="Background" class="bg-video">
+    
+    <main>
+        <div class="login-card">
+            <div class="header">
+                <h1>Welcome Back</h1>
+                <p>Manage your expenses with precision.</p>
+            </div>
+
+            <form action="/login" method="POST">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="name@company.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="••••••••">
+                </div>
+
+                <button type="submit" id="submit-button">Log In</button>
+            </form>
+
+            <div class="footer-links">
+                <a href="#">Forgot password?</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
