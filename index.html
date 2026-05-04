@@ -48,7 +48,19 @@
                     <div class="glass-card expenseChart"></div>
                 </div>
                 <div class="grid-right">
-                    <div class="glass-card expenseTableRight"></div>
+                    <table class="glass-card expenseTableRight">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="expense-table-body">
+
+                        </tbody>
+                    </table>
                 </div>
             </section>
 
@@ -66,10 +78,13 @@
             sidebar.classList.toggle('collapsed');
         });
     </script>
-    <!--script to get user details get demo details if user not logged in-->
     <script>
-        
+        const loginButton = document.querySelector('.btn-login');
+        loginButton.addEventListener('click', () => {
+            window.location.href = './pages/login.html';
+        });
     </script>
     <script src="./assets/scripts/toggleTheme.js"></script>
+    <script src="./assets/scripts/getExpenses.js"></script>
 </body>
 </html>
