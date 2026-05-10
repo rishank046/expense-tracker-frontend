@@ -349,6 +349,8 @@
 
       loginForm.addEventListener("submit", async (e) => {
         e.preventDefault();
+        const loginButton = document.querySelector(".login-btn");
+        loginButton.disabled = true;
 
         const formData = new FormData(loginForm);
         const data = Object.fromEntries(formData.entries());
@@ -369,10 +371,12 @@
             window.location.href = "/index.html";
           } else {
             const err = await response.json();
+            loginButton.disabled = false;
             alert(err.message || "Invalid email or password.");
           }
         } catch (error) {
           console.error("Network error:", error);
+          loginButton.disabled = false;
           alert("Could not connect to the server.");
         }
       });
