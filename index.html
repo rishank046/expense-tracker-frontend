@@ -1,90 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expense Tracker | Dashboard</title>
-    <link rel="stylesheet" href="./assets/css/index.css">
-</head>
-<body>
-    <div class="app-container">
-        <aside id="sidebar">
-            <div class="sidebar-header">
-                <img src="./assets/images/logo-full.png" alt="Logo" class="logo">
-                <button id="toggle-btn">☰</button>
-            </div>
-            
-            <nav class="sidebar-nav">
-                <ul>
-                    <li><a href="#" class="active"><span class="icon">🏠</span> <span class="nav-text">Home</span></a></li>
-                    <li><a href="#"><span class="icon">📊</span> <span class="nav-text">Dashboard</span></a></li>
-                    <li><a href="#"><span class="icon">💸</span> <span class="nav-text">Transactions</span></a></li>
-                    <li><a href="#"><span class="icon">📈</span> <span class="nav-text">Analysis</span></a></li>
-                </ul>
-
-                <div class="sidebar-footer">
-                    <button id="theme-toggle" class="sidebar-theme-btn" title="Switch Theme">
-                        <span id="light-mode" style="display: none;">☀️</span>
-                        <span id="dark-mode">🌙</span>
-                    </button>
-                    <div class="aside-auth">
-                        <button class="btn-login"><span class="icon">🔑</span> <span class="nav-text">Log In</span></button>
-                    </div>
-                </div>
-            </nav>
-        </aside>
-
-        <main class="content-area">
-            <header class="top-bar">
-                <div class="welcome-text">
-                    <h1>Dashboard</h1>
-                    <p>Welcome back, Rishank</p>
-                </div>
-            </header>
-
-            <section class="dashboard-grid">
-                <div class="grid-left">
-                    <div class="glass-card totalExpense"></div>
-                    <div class="glass-card expenseChart"></div>
-                </div>
-                <div class="grid-right">
-                    <table class="glass-card expenseTableRight">
-                        <thead>
-                            <tr>
-                                <th>id</th>
-                                <th>Description</th>
-                                <th>Amount</th>
-                                <th>Date</th>
-                            </tr>
-                        </thead>
-                        <tbody id="expense-table-body">
-
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-            <footer>
-                <span>@made by Rishank Kumar</span>
-                <span>rishank046@gmail.com</span>
-            </footer>
-        </main>
-    </div>
-
-    <script>
-        const sidebar = document.getElementById('sidebar');
-        const toggleBtn = document.getElementById('toggle-btn');
-        toggleBtn.addEventListener('click', () => {
-            sidebar.classList.toggle('collapsed');
-        });
-    </script>
-    <script>
-        const loginButton = document.querySelector('.btn-login');
-        loginButton.addEventListener('click', () => {
-            window.location.href = './pages/login.html';
-        });
-    </script>
-    <script src="./assets/scripts/toggleTheme.js"></script>
-    <script src="./assets/scripts/getExpenses.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>expense-tracker-frontend</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
