@@ -105,7 +105,7 @@ npm install
 ### 2. Configure Environment Variables
 Create a `.env` file in the root directory:
 ```env
-VITE_API_URL=http://localhost:3000
+VITE_API_URL=https://expense-tracker-api-5f8c.onrender.com
 ```
 
 ### 3. Start the Development Server
