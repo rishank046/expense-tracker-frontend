@@ -63,7 +63,7 @@ export const Expenses = () => {
       }
     } catch (err) {
       toast.error(err.customMessage || 'Failed to fetch expenses');
-    } fontFinally: {
+    } finally {
       setLoading(false);
     }
   }, [isFilterAmountActive, maxAmountFilter, toast]);

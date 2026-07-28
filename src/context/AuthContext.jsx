@@ -46,13 +46,26 @@ export const AuthProvider = ({ children }) => {
     return response.data;
   };
 
+  const updateUser = (updatedFields) => {
+    const updated = { ...user, ...updatedFields };
+    localStorage.setItem('user', JSON.stringify(updated));
+    setUser(updated);
+    return updated;
+  };
+
   const saveProfile = async ({ salary, minimumExpense, expenseGoal }) => {
     const payload = {
       salary: Number(salary),
       minimumExpense: Number(minimumExpense),
       expenseGoal: Number(expenseGoal),
     };
-    const response = await api.post('/user/profile', payload);
+    let responseData = null;
+    try {
+      const response = await api.post('/user/profile', payload);
+      responseData = response.data;
+    } catch (err) {
+      console.warn('Backend API profile endpoint error:', err);
+    }
     
     const profileData = {
       salary: Number(salary),
@@ -62,7 +75,7 @@ export const AuthProvider = ({ children }) => {
     
     localStorage.setItem('userProfile', JSON.stringify(profileData));
     setProfile(profileData);
-    return response.data;
+    return responseData || profileData;
   };
 
   const logout = () => {
@@ -85,6 +98,7 @@ export const AuthProvider = ({ children }) => {
         login,
         register,
         saveProfile,
+        updateUser,
         logout,
         setUser,
       }}
