@@ -6,8 +6,9 @@ import { useToast } from '../context/ToastContext';
 import { CardSkeleton, TableRowSkeleton } from '../components/common/Skeleton';
 import { EmptyState } from '../components/common/EmptyState';
 import { CategoryBadge } from '../components/common/Badge';
+import { formatCurrency } from '../utils/currency';
 import { 
-  DollarSign, 
+  IndianRupee, 
   TrendingUp, 
   Wallet, 
   Target, 
@@ -179,11 +180,11 @@ export const Dashboard = () => {
                 Total Expenses
               </span>
               <div className="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center">
-                <DollarSign className="w-5 h-5" />
+                <IndianRupee className="w-5 h-5" />
               </div>
             </div>
             <div className="text-2xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">
-              ${totalAmountSpent.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+              {formatCurrency(totalAmountSpent)}
             </div>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 flex items-center gap-1">
               <Calendar className="w-3.5 h-3.5" />
@@ -205,7 +206,7 @@ export const Dashboard = () => {
               </div>
             </div>
             <div className="text-2xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">
-              ${salary.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+              {formatCurrency(salary)}
             </div>
             <p className="text-xs text-emerald-600 dark:text-emerald-400 mt-2 font-medium">
               Base salary baseline
@@ -235,7 +236,7 @@ export const Dashboard = () => {
                   : 'text-rose-600 dark:text-rose-400'
               }`}
             >
-              ${budgetRemaining.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+              {formatCurrency(budgetRemaining)}
             </div>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
               {budgetRemaining >= 0 ? 'Within budget bounds' : 'Exceeded monthly income!'}
@@ -253,7 +254,7 @@ export const Dashboard = () => {
               </div>
             </div>
             <div className="text-2xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">
-              ${expenseGoal.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+              {formatCurrency(expenseGoal)}
             </div>
             {/* Progress bar */}
             <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2 mt-3 overflow-hidden">
@@ -447,7 +448,7 @@ export const Dashboard = () => {
                       })}
                     </td>
                     <td className="py-3.5 px-4 text-right font-bold text-slate-900 dark:text-slate-100">
-                      ${Number(item.amount).toFixed(2)}
+                      {formatCurrency(item.amount)}
                     </td>
                   </tr>
                 ))}

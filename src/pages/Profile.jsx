@@ -3,6 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import { useToast } from '../context/ToastContext';
 import api from '../api/axios';
+import { formatCurrency } from '../utils/currency';
 import { 
   User, 
   Mail, 
@@ -188,7 +189,7 @@ export const Profile = () => {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div>
                   <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                    Monthly Salary ($)
+                    Monthly Salary (₹)
                   </label>
                   <input
                     type="number"
@@ -202,7 +203,7 @@ export const Profile = () => {
                 </div>
                 <div>
                   <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                    Minimum Expense ($)
+                    Minimum Expense (₹)
                   </label>
                   <input
                     type="number"
@@ -216,7 +217,7 @@ export const Profile = () => {
                 </div>
                 <div>
                   <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                    Expense Goal Limit ($)
+                    Expense Goal Limit (₹)
                   </label>
                   <input
                     type="number"
@@ -336,21 +337,21 @@ export const Profile = () => {
           <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/60">
             <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 block">Monthly Income</span>
             <span className="text-lg font-bold text-slate-900 dark:text-slate-100 block mt-0.5">
-              ${Number(profile?.salary || formData.salary).toLocaleString()}
+              {formatCurrency(profile?.salary || formData.salary)}
             </span>
           </div>
 
           <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/60">
             <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 block">Min. Expense Baseline</span>
             <span className="text-lg font-bold text-slate-900 dark:text-slate-100 block mt-0.5">
-              ${Number(profile?.minimumExpense || formData.minimumExpense).toLocaleString()}
+              {formatCurrency(profile?.minimumExpense || formData.minimumExpense)}
             </span>
           </div>
 
           <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/60">
             <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 block">Expense Goal Ceiling</span>
             <span className="text-lg font-bold text-slate-900 dark:text-slate-100 block mt-0.5">
-              ${Number(profile?.expenseGoal || formData.expenseGoal).toLocaleString()}
+              {formatCurrency(profile?.expenseGoal || formData.expenseGoal)}
             </span>
           </div>
         </div>

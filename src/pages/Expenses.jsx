@@ -8,6 +8,7 @@ import { CategoryBadge } from '../components/common/Badge';
 import { ConfirmDialog } from '../components/common/ConfirmDialog';
 import { ExpenseModal } from '../components/expense/ExpenseModal';
 import { CATEGORIES } from '../constants/categories';
+import { formatCurrency } from '../utils/currency';
 import { 
   Search, 
   Filter, 
@@ -158,7 +159,7 @@ export const Expenses = () => {
       toast.info('No expenses available to export');
       return;
     }
-    const headers = ['Expense ID', 'Description', 'Category', 'Amount ($)', 'Date'];
+    const headers = ['Expense ID', 'Description', 'Category', 'Amount (₹)', 'Date'];
     const rows = filteredExpenses.map((e) => [
       e.expenseId || e.id || '',
       `"${(e.description || '').replace(/"/g, '""')}"`,
@@ -257,7 +258,7 @@ export const Expenses = () => {
               <SlidersHorizontal className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
               <input
                 type="number"
-                placeholder="Max Amount Filter ($)..."
+                placeholder="Max Amount Filter (₹)..."
                 value={maxAmountFilter}
                 onChange={(e) => setMaxAmountFilter(e.target.value)}
                 className="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 text-slate-900 dark:text-slate-100 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
@@ -286,7 +287,7 @@ export const Expenses = () => {
         {isFilterAmountActive && (
           <div className="flex items-center gap-2 pt-1 text-xs text-blue-600 dark:text-blue-400 font-medium">
             <span className="px-2.5 py-1 rounded-md bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 flex items-center gap-1.5">
-              Showing expenses &le; ${maxAmountFilter}
+              Showing expenses &le; {formatCurrency(maxAmountFilter)}
               <X className="w-3.5 h-3.5 cursor-pointer hover:text-rose-500" onClick={handleClearAmountFilter} />
             </span>
           </div>
@@ -378,7 +379,7 @@ export const Expenses = () => {
                           : 'N/A'}
                       </td>
                       <td className="py-3.5 px-4 text-right font-bold text-slate-900 dark:text-slate-100">
-                        ${Number(item.amount).toFixed(2)}
+                        {formatCurrency(item.amount)}
                       </td>
                       <td className="py-3.5 px-4 text-right space-x-1">
                         <button
@@ -462,7 +463,7 @@ export const Expenses = () => {
           onConfirm={handleDeleteConfirm}
           isLoading={deleteLoading}
           title="Delete Expense Entry"
-          message={`Are you sure you want to delete "${expenseToDelete?.description}" ($${expenseToDelete?.amount})? This operation cannot be reversed.`}
+          message={`Are you sure you want to delete "${expenseToDelete?.description}" (${formatCurrency(expenseToDelete?.amount)})? This operation cannot be reversed.`}
         />
       )}
     </div>

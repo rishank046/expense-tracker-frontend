@@ -108,11 +108,11 @@ export const ExpenseModal = ({ isOpen, onClose, expenseToEdit = null, onSuccess 
         {/* Amount */}
         <div>
           <label className="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">
-            Amount ($)
+            Amount (₹)
           </label>
           <div className="relative">
             <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400 font-semibold text-sm">
-              $
+              ₹
             </span>
             <input
               type="number"

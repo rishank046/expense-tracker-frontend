@@ -3,10 +3,11 @@ import api from '../api/axios';
 import { useToast } from '../context/ToastContext';
 import { CardSkeleton } from '../components/common/Skeleton';
 import { CategoryBadge } from '../components/common/Badge';
+import { formatCurrency } from '../utils/currency';
 import { 
   BarChart3, 
   Calendar, 
-  DollarSign, 
+  IndianRupee, 
   TrendingUp, 
   TrendingDown, 
   Search, 
@@ -180,11 +181,11 @@ export const Analytics = () => {
                 Range Total (SQL SUM)
               </span>
               <div className="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center">
-                <DollarSign className="w-5 h-5" />
+                <IndianRupee className="w-5 h-5" />
               </div>
             </div>
             <div className="text-2xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">
-              ${totalSpentInRange.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+              {formatCurrency(totalSpentInRange)}
             </div>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 truncate">
               {summaryData.startDate ? new Date(summaryData.startDate).toLocaleDateString() : 'Start'} &rarr;{' '}
@@ -203,7 +204,7 @@ export const Analytics = () => {
               </div>
             </div>
             <div className="text-2xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">
-              ${stats.avg.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+              {formatCurrency(stats.avg)}
             </div>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
               Across {stats.count} total transactions
@@ -221,7 +222,7 @@ export const Analytics = () => {
               </div>
             </div>
             <div className="text-2xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">
-              ${stats.min.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+              {formatCurrency(stats.min)}
             </div>
             <p className="text-xs text-emerald-600 dark:text-emerald-400 mt-2 font-medium">
               Lowest recorded transaction
@@ -239,7 +240,7 @@ export const Analytics = () => {
               </div>
             </div>
             <div className="text-2xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">
-              ${stats.max.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+              {formatCurrency(stats.max)}
             </div>
             <p className="text-xs text-rose-600 dark:text-rose-400 mt-2 font-medium">
               Highest recorded transaction
@@ -303,14 +304,14 @@ export const Analytics = () => {
               Amount Ceiling Filter (`GET /expense/filterAmount`)
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400">
-              Query expenses with amount strictly less than or equal to threshold ($).
+              Query expenses with amount strictly less than or equal to threshold (₹).
             </p>
           </div>
 
           <div className="flex items-center gap-2">
             <div className="relative">
               <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400 font-bold text-xs">
-                $
+                ₹
               </span>
               <input
                 type="number"
@@ -332,7 +333,7 @@ export const Analytics = () => {
         {/* Results List */}
         {filteredAmountData.length === 0 ? (
           <div className="py-8 text-center text-xs text-slate-400">
-            No expenses found under ${amountThreshold}
+            No expenses found under {formatCurrency(amountThreshold)}
           </div>
         ) : (
           <div className="overflow-x-auto">
@@ -360,7 +361,7 @@ export const Analytics = () => {
                         : 'N/A'}
                     </td>
                     <td className="py-3 px-4 text-right font-bold text-emerald-600 dark:text-emerald-400">
-                      ${Number(item.amount).toFixed(2)}
+                      {formatCurrency(item.amount)}
                     </td>
                   </tr>
                 ))}

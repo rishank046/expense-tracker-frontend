@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import api from '../api/axios';
+import { formatCurrency } from '../utils/currency';
 import { 
   PieChart, 
   Wallet, 
@@ -9,7 +10,7 @@ import {
   AlertTriangle, 
   CheckCircle2, 
   TrendingUp, 
-  DollarSign, 
+  IndianRupee, 
   Save, 
   Loader2,
   ShieldCheck
@@ -108,7 +109,7 @@ export const Budgets = () => {
               {isOverBudget ? 'Exceeded Goal' : 'On Track'}
             </div>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-              You have used <span className="font-bold text-slate-900 dark:text-slate-100">{budgetUsedPct}%</span> of your ${curGoal} expense goal ceiling.
+              You have used <span className="font-bold text-slate-900 dark:text-slate-100">{budgetUsedPct}%</span> of your {formatCurrency(curGoal)} expense goal ceiling.
             </p>
           </div>
 
@@ -135,10 +136,10 @@ export const Budgets = () => {
 
           <div>
             <div className="text-2xl font-bold text-slate-900 dark:text-slate-100">
-              ${netSavings.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+              {formatCurrency(netSavings)}
             </div>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-              Monthly Income (${curSalary}) minus Total Spent (${totalSpent})
+              Monthly Income ({formatCurrency(curSalary)}) minus Total Spent ({formatCurrency(totalSpent)})
             </p>
           </div>
 
@@ -161,7 +162,7 @@ export const Budgets = () => {
 
           <div>
             <div className="text-2xl font-bold text-slate-900 dark:text-slate-100">
-              ${curMinExpense.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+              {formatCurrency(curMinExpense)}
             </div>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
               Minimum mandatory baseline (rent, food, utilities)
@@ -187,11 +188,11 @@ export const Budgets = () => {
           {/* Monthly Salary */}
           <div>
             <label className="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">
-              Monthly Income / Salary ($)
+              Monthly Income / Salary (₹)
             </label>
             <div className="relative">
               <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400 font-semibold text-sm">
-                $
+                ₹
               </span>
               <input
                 type="number"
@@ -207,11 +208,11 @@ export const Budgets = () => {
           {/* Minimum Expense */}
           <div>
             <label className="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">
-              Minimum Required Expense ($)
+              Minimum Required Expense (₹)
             </label>
             <div className="relative">
               <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400 font-semibold text-sm">
-                $
+                ₹
               </span>
               <input
                 type="number"
@@ -227,11 +228,11 @@ export const Budgets = () => {
           {/* Expense Goal Ceiling */}
           <div>
             <label className="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">
-              Monthly Expense Goal Limit ($)
+              Monthly Expense Goal Limit (₹)
             </label>
             <div className="relative">
               <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400 font-semibold text-sm">
-                $
+                ₹
               </span>
               <input
                 type="number"
