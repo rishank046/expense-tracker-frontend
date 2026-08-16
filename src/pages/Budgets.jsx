@@ -4,13 +4,10 @@ import { useToast } from '../context/ToastContext';
 import api from '../api/axios';
 import { formatCurrency } from '../utils/currency';
 import { 
-  PieChart, 
   Wallet, 
-  Target, 
   AlertTriangle, 
   CheckCircle2, 
   TrendingUp, 
-  IndianRupee, 
   Save, 
   Loader2,
   ShieldCheck
@@ -88,13 +85,13 @@ export const Budgets = () => {
       {/* Budget Status Overview */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {/* Budget Health Card */}
-        <div className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm space-y-4">
+        <div className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs card-hover-effect space-y-4 group">
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
               Budget Health
             </span>
             <div
-              className={`w-9 h-9 rounded-xl flex items-center justify-center ${
+              className={`w-9 h-9 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110 ${
                 isOverBudget
                   ? 'bg-rose-500/10 text-rose-500'
                   : 'bg-emerald-500/10 text-emerald-500'
@@ -115,7 +112,7 @@ export const Budgets = () => {
 
           <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2.5 overflow-hidden">
             <div
-              className={`h-2.5 rounded-full transition-all ${
+              className={`h-2.5 rounded-full transition-all duration-500 ease-out ${
                 isOverBudget ? 'bg-rose-500' : budgetUsedPct > 75 ? 'bg-amber-500' : 'bg-emerald-500'
               }`}
               style={{ width: `${budgetUsedPct}%` }}
@@ -124,12 +121,12 @@ export const Budgets = () => {
         </div>
 
         {/* Projected Monthly Savings Card */}
-        <div className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm space-y-4">
+        <div className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs card-hover-effect space-y-4 group">
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
               Net Savings Capacity
             </span>
-            <div className="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+            <div className="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center transition-transform group-hover:scale-110">
               <Wallet className="w-5 h-5" />
             </div>
           </div>
@@ -150,12 +147,12 @@ export const Budgets = () => {
         </div>
 
         {/* Minimum Expense Baseline */}
-        <div className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm space-y-4">
+        <div className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs card-hover-effect space-y-4 group">
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
               Essential Expenses
             </span>
-            <div className="w-9 h-9 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+            <div className="w-9 h-9 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center transition-transform group-hover:scale-110">
               <ShieldCheck className="w-5 h-5" />
             </div>
           </div>

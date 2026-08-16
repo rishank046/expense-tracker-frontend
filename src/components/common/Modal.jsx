@@ -28,7 +28,7 @@ export const Modal = ({ isOpen, onClose, title, children, maxWidth = 'max-w-lg' 
 
       {/* Modal Dialog */}
       <div
-        className={`relative w-full ${maxWidth} bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden z-10 animate-fade-in my-8`}
+        className={`relative w-full ${maxWidth} bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800/90 shadow-2xl overflow-hidden z-10 animate-scale-up my-8`}
         role="dialog"
         aria-modal="true"
       >

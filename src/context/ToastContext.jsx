@@ -3,23 +3,40 @@ import { CheckCircle2, AlertCircle, Info, XCircle, X } from 'lucide-react';
 
 const ToastContext = createContext(null);
 
+const sanitizeToastMessage = (msg) => {
+  if (typeof msg === 'string') return msg;
+  if (msg === null || msg === undefined) return 'An error occurred';
+  if (typeof msg === 'object') {
+    if (typeof msg.customMessage === 'string') return msg.customMessage;
+    if (typeof msg.detail === 'string') return msg.detail;
+    if (typeof msg.message === 'string') return msg.message;
+    try {
+      return JSON.stringify(msg);
+    } catch {
+      return 'An error occurred';
+    }
+  }
+  return String(msg);
+};
+
 export const ToastProvider = ({ children }) => {
   const [toasts, setToasts] = useState([]);
 
+  const removeToast = useCallback((id) => {
+    setToasts((prev) => prev.filter((toast) => toast.id !== id));
+  }, []);
+
   const addToast = useCallback((message, type = 'info', duration = 4000) => {
     const id = Date.now() + Math.random().toString(36).substr(2, 4);
-    setToasts((prev) => [...prev, { id, message, type }]);
+    const cleanMsg = sanitizeToastMessage(message);
+    setToasts((prev) => [...prev, { id, message: cleanMsg, type }]);
 
     if (duration > 0) {
       setTimeout(() => {
         removeToast(id);
       }, duration);
     }
-  }, []);
-
-  const removeToast = useCallback((id) => {
-    setToasts((prev) => prev.filter((toast) => toast.id !== id));
-  }, []);
+  }, [removeToast]);
 
   const toast = {
     success: (msg, duration) => addToast(msg, 'success', duration),
@@ -51,7 +68,9 @@ export const ToastProvider = ({ children }) => {
               {t.type === 'error' && <XCircle className="w-5 h-5 text-rose-500 shrink-0" />}
               {t.type === 'warning' && <AlertCircle className="w-5 h-5 text-amber-500 shrink-0" />}
               {t.type === 'info' && <Info className="w-5 h-5 text-blue-500 shrink-0" />}
-              <span className="text-sm font-medium leading-tight">{t.message}</span>
+              <span className="text-sm font-medium leading-tight">
+                {typeof t.message === 'string' ? t.message : JSON.stringify(t.message)}
+              </span>
             </div>
             <button
               onClick={() => removeToast(t.id)}

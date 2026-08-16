@@ -7,9 +7,9 @@ export const CategoryBadge = ({ categoryName }) => {
 
   return (
     <span
-      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium border transition-colors ${cat.bg} ${cat.color} ${cat.border}`}
+      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold border transition-all duration-150 shadow-2xs hover:scale-[1.02] ${cat.bg} ${cat.color} ${cat.border}`}
     >
-      <Icon className="w-3.5 h-3.5" />
+      <Icon className="w-3.5 h-3.5 shrink-0" />
       <span>{cat.name}</span>
     </span>
   );

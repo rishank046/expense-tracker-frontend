@@ -55,7 +55,7 @@ export const Profile = () => {
       try {
         await api.get('/expense/getSummary');
         setApiHealth('online');
-      } catch (err) {
+      } catch {
         setApiHealth('error');
       }
     };

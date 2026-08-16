@@ -18,7 +18,6 @@ import {
   Download, 
   ArrowUpDown, 
   SlidersHorizontal,
-  RefreshCw,
   X
 } from 'lucide-react';
 

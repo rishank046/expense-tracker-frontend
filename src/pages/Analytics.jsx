@@ -2,19 +2,13 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import api from '../api/axios';
 import { useToast } from '../context/ToastContext';
 import { CardSkeleton } from '../components/common/Skeleton';
-import { CategoryBadge } from '../components/common/Badge';
 import { formatCurrency } from '../utils/currency';
 import { 
-  BarChart3, 
   Calendar, 
   IndianRupee, 
   TrendingUp, 
   TrendingDown, 
-  Search, 
-  Filter, 
-  PieChart as PieIcon,
-  Sparkles,
-  AlertCircle
+  Sparkles
 } from 'lucide-react';
 import {
   ResponsiveContainer,
@@ -23,8 +17,6 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  PieChart,
-  Pie,
   Cell,
 } from 'recharts';
 
@@ -175,12 +167,12 @@ export const Analytics = () => {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* Total Date-Range Aggregation */}
-          <div className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+          <div className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs card-hover-effect group">
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 Range Total (SQL SUM)
               </span>
-              <div className="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+              <div className="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center transition-transform group-hover:scale-110">
                 <IndianRupee className="w-5 h-5" />
               </div>
             </div>
@@ -194,12 +186,12 @@ export const Analytics = () => {
           </div>
 
           {/* Average Expense per transaction */}
-          <div className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+          <div className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs card-hover-effect group">
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 Average Spend
               </span>
-              <div className="w-9 h-9 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+              <div className="w-9 h-9 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center transition-transform group-hover:scale-110">
                 <TrendingUp className="w-5 h-5" />
               </div>
             </div>
@@ -212,12 +204,12 @@ export const Analytics = () => {
           </div>
 
           {/* Minimum Expense Logged */}
-          <div className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+          <div className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs card-hover-effect group">
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 Smallest Expense
               </span>
-              <div className="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+              <div className="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center transition-transform group-hover:scale-110">
                 <TrendingDown className="w-5 h-5" />
               </div>
             </div>
@@ -230,12 +222,12 @@ export const Analytics = () => {
           </div>
 
           {/* Maximum Expense Logged */}
-          <div className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+          <div className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs card-hover-effect group">
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 Largest Expense
               </span>
-              <div className="w-9 h-9 rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-400 flex items-center justify-center">
+              <div className="w-9 h-9 rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-400 flex items-center justify-center transition-transform group-hover:scale-110">
                 <Sparkles className="w-5 h-5" />
               </div>
             </div>

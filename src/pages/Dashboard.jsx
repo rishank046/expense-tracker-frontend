@@ -13,10 +13,7 @@ import {
   Wallet, 
   Target, 
   Calendar, 
-  Plus, 
-  ArrowUpRight, 
-  Receipt,
-  AlertCircle
+  ArrowUpRight
 } from 'lucide-react';
 import {
   ResponsiveContainer,
@@ -87,7 +84,6 @@ export const Dashboard = () => {
   // Derived financial analytics
   const totalAmountSpent = Number(summary.totalExpense || 0);
   const salary = Number(profile?.salary || 5000);
-  const minExpense = Number(profile?.minimumExpense || 1000);
   const expenseGoal = Number(profile?.expenseGoal || 3000);
 
   const budgetRemaining = salary - totalAmountSpent;
@@ -174,12 +170,12 @@ export const Dashboard = () => {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* Total Expenses */}
-          <div className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm relative overflow-hidden group">
+          <div className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs card-hover-effect relative overflow-hidden group">
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 Total Expenses
               </span>
-              <div className="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+              <div className="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center transition-transform group-hover:scale-110">
                 <IndianRupee className="w-5 h-5" />
               </div>
             </div>
@@ -196,12 +192,12 @@ export const Dashboard = () => {
           </div>
 
           {/* Monthly Budget / Salary */}
-          <div className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+          <div className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs card-hover-effect group">
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 Monthly Income / Salary
               </span>
-              <div className="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+              <div className="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center transition-transform group-hover:scale-110">
                 <Wallet className="w-5 h-5" />
               </div>
             </div>
@@ -214,13 +210,13 @@ export const Dashboard = () => {
           </div>
 
           {/* Budget Remaining */}
-          <div className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+          <div className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs card-hover-effect group">
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 Budget Remaining
               </span>
               <div
-                className={`w-9 h-9 rounded-xl flex items-center justify-center ${
+                className={`w-9 h-9 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110 ${
                   budgetRemaining >= 0
                     ? 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400'
                     : 'bg-rose-500/10 text-rose-600 dark:text-rose-400'
@@ -244,12 +240,12 @@ export const Dashboard = () => {
           </div>
 
           {/* Target Goal Limit */}
-          <div className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+          <div className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs card-hover-effect group">
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 Expense Goal Target
               </span>
-              <div className="w-9 h-9 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center">
+              <div className="w-9 h-9 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center transition-transform group-hover:scale-110">
                 <Target className="w-5 h-5" />
               </div>
             </div>
@@ -259,7 +255,7 @@ export const Dashboard = () => {
             {/* Progress bar */}
             <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2 mt-3 overflow-hidden">
               <div
-                className={`h-2 rounded-full transition-all ${
+                className={`h-2 rounded-full transition-all duration-500 ease-out ${
                   goalUsagePercentage > 85
                     ? 'bg-rose-500'
                     : goalUsagePercentage > 65
