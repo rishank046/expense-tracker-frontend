@@ -6,6 +6,9 @@ Designed with modern aesthetic principles inspired by **Linear**, **Vercel**, **
 
 ---
 
+## Live Deployed Link
+Click [Expense-Traker-Application](https://expense-tracker-frontend-ci9u.onrender.com/) to checkout the webapp
+
 ## 📌 Features & Application Workflow
 
 - **🔐 Authentication & Session Management**:
@@ -76,6 +79,21 @@ src/
 ├── main.jsx                # Application root entry point
 └── index.css               # Tailwind CSS v4 imports, CSS variables, and glassmorphism styles
 ```
+
+## 📸 Preview Images
+
+### Login Page
+<img width="1920" height="975" alt="image" src="https://github.com/user-attachments/assets/f648c093-6b6b-4fe4-9046-9222cf84d909" />
+
+### Home Page
+<img width="1920" height="977" alt="image" src="https://github.com/user-attachments/assets/e82d95ab-676b-4c8f-a0d9-ef699abfc512" />
+
+### Expense Analysis Page
+<img width="1920" height="978" alt="image" src="https://github.com/user-attachments/assets/8f0cfce5-70cd-4b12-87fd-c853cbeb1d5f" />
+
+### Light Theme
+<img width="1920" height="972" alt="image" src="https://github.com/user-attachments/assets/01d8a737-0449-42c0-a14f-3df00ce3255e" />
+
 
 ### Authentication & API Request Flow
 1. When a user logs in via `POST /user/login`, the API returns a authentication token and sets an HTTP cookie.
