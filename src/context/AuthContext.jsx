@@ -11,7 +11,22 @@ export const AuthProvider = ({ children }) => {
   });
   const [profile, setProfile] = useState(() => {
     const savedProfile = localStorage.getItem('userProfile');
-    return savedProfile ? JSON.parse(savedProfile) : null;
+    if (!savedProfile) return null;
+    try {
+      const parsed = JSON.parse(savedProfile);
+      const minExp = parsed.minimum_expense !== undefined ? parsed.minimum_expense : parsed.minimumExpense;
+      const expGoal = parsed.expense_goal !== undefined ? parsed.expense_goal : parsed.expenseGoal;
+      return {
+        ...parsed,
+        salary: Number(parsed.salary || 0),
+        minimum_expense: Number(minExp || 0),
+        expense_goal: Number(expGoal || 0),
+        minimumExpense: Number(minExp || 0),
+        expenseGoal: Number(expGoal || 0),
+      };
+    } catch {
+      return null;
+    }
   });
   const [loading, setLoading] = useState(true);
 
@@ -53,29 +68,38 @@ export const AuthProvider = ({ children }) => {
     return updated;
   };
 
-  const saveProfile = async ({ salary, minimumExpense, expenseGoal }) => {
+  const saveProfile = async (profileInput) => {
+    const minExp = Number(
+      profileInput.minimum_expense !== undefined
+        ? profileInput.minimum_expense
+        : profileInput.minimumExpense
+    );
+    const expGoal = Number(
+      profileInput.expense_goal !== undefined
+        ? profileInput.expense_goal
+        : profileInput.expenseGoal
+    );
+    const salaryNum = Number(profileInput.salary);
+
     const payload = {
-      salary: Number(salary),
-      minimumExpense: Number(minimumExpense),
-      expenseGoal: Number(expenseGoal),
+      salary: salaryNum,
+      minimum_expense: minExp,
+      expense_goal: expGoal,
     };
-    let responseData = null;
-    try {
-      const response = await api.post('/user/profile', payload);
-      responseData = response.data;
-    } catch (err) {
-      console.warn('Backend API profile endpoint error:', err);
-    }
+
+    const response = await api.post('/user/profile', payload);
     
     const profileData = {
-      salary: Number(salary),
-      minimumExpense: Number(minimumExpense),
-      expenseGoal: Number(expenseGoal),
+      salary: salaryNum,
+      minimum_expense: minExp,
+      expense_goal: expGoal,
+      minimumExpense: minExp,
+      expenseGoal: expGoal,
     };
     
     localStorage.setItem('userProfile', JSON.stringify(profileData));
     setProfile(profileData);
-    return responseData || profileData;
+    return response?.data || profileData;
   };
 
   const logout = () => {

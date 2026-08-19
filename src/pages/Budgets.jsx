@@ -49,8 +49,8 @@ export const Budgets = () => {
     try {
       await saveProfile({
         salary: Number(salary),
-        minimumExpense: Number(minimumExpense),
-        expenseGoal: Number(expenseGoal),
+        minimum_expense: Number(minimumExpense),
+        expense_goal: Number(expenseGoal),
       });
       toast.success('Financial profile and budget goals updated successfully');
     } catch (err) {

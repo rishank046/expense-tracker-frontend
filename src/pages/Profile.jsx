@@ -91,8 +91,8 @@ export const Profile = () => {
       // 2. Save financial profile targets
       await saveProfile({
         salary: Number(formData.salary),
-        minimumExpense: Number(formData.minimumExpense),
-        expenseGoal: Number(formData.expenseGoal),
+        minimum_expense: Number(formData.minimumExpense),
+        expense_goal: Number(formData.expenseGoal),
       });
 
       toast.success('Profile and financial targets saved successfully!');
